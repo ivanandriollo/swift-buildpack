@@ -50,7 +50,7 @@ load_pins_signature() {
 }
 
 load_signature() {
-  local filename = $1
+  local filename=$1
   if test -f $CACHE_DIR/swift/$filename; then
     cat $CACHE_DIR/swift/$filename
   else
