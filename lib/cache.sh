@@ -1,5 +1,5 @@
 ##
-# Copyright IBM Corporation 2016
+# Copyright IBM Corporation 2016,2017
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,22 +22,32 @@ create_package_signature() {
   echo "$(cat $BUILD_DIR/Package.swift)"
 }
 
+create_pins_signature() {
+  echo "$(cat $BUILD_DIR/Package.pins)"
+}
+
 save_signatures() {
   echo "$(create_swift_signature)" > $CACHE_DIR/swift/.swift-signature
   echo "$(create_package_signature)" > $CACHE_DIR/swift/.package-signature
+  echo "$(create_pins_signature)" > $CACHE_DIR/swift/.pins-signature
 }
 
 load_swift_signature() {
-  if test -f $CACHE_DIR/swift/.swift-signature; then
-    cat $CACHE_DIR/swift/.swift-signature
-  else
-    echo ""
-  fi
+  load_signature ".swift-signature"
 }
 
 load_packages_signature() {
-  if test -f $CACHE_DIR/swift/.package-signature; then
-    cat $CACHE_DIR/swift/.package-signature
+  load_signature ".package-signature"
+}
+
+load_pins_signature() {
+  load_signature ".pins-signature"
+}
+
+load_signature() {
+  local filename = $1
+  if test -f $CACHE_DIR/swift/$filename; then
+    cat $CACHE_DIR/swift/$filename
   else
     echo ""
   fi
@@ -50,6 +60,8 @@ get_cache_status() {
     echo "new swift signature"
   elif [ "$(create_package_signature)" != "$(load_packages_signature)" ]; then
     echo "new package signature"
+  elif [ "$(create_pins_signature)" != "$(load_pins_signature)" ]; then
+    echo "new pins signature"
   else
     echo "valid"
   fi
