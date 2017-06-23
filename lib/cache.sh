@@ -23,7 +23,12 @@ create_package_signature() {
 }
 
 create_pins_signature() {
-  echo "$(cat $BUILD_DIR/Package.pins)"
+  # Older versions of Swift do not use a Package.pins file
+  if test -f $BUILD_DIR/Package.pins; then
+    echo "$(cat $BUILD_DIR/Package.pins)"
+  else
+    echo ""
+  fi
 }
 
 save_signatures() {

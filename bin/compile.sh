@@ -267,7 +267,6 @@ cache_build
 # Remove /.ssh folder
 rm -rf ~/.ssh
 
-
 # ----------------------------------------------------------------------------- #
 # Removing binaries and tar files from the CACHE_DIR to speed up                #
 # the 'Uploading droplet' step. Caching tar files and/or large                  #

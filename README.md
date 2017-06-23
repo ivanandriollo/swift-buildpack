@@ -367,7 +367,7 @@ bx app env-set <app_name> SWIFT_BUILD_DIR_CACHE true
 bx app restage <app_name>
 ```
 
-Note that if at some point you change the contents of your `Package.swift` file, the buildpack will automatically refetch the dependencies and update the cache accordingly.
+Note that if at some point you change the contents of your `Package.swift` or `Package.pins` file, the buildpack will automatically refetch the dependencies and update the cache accordingly.
 
 ### Debugging
 
