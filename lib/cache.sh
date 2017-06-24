@@ -65,7 +65,7 @@ get_cache_status() {
     echo "new swift signature"
   elif [ "$(create_package_signature)" != "$(load_packages_signature)" ]; then
     echo "new package signature"
-  elif [ "$(create_pins_signature)" != "$(load_pins_signature)" ]; then
+  elif [[ ! -z "$(create_pins_signature)" ]] && [ "$(create_pins_signature)" != "$(load_pins_signature)" ]; then
     echo "new pins signature"
   else
     echo "valid"
