@@ -35,6 +35,10 @@ save_signatures() {
   echo "$(create_swift_signature)" > $CACHE_DIR/swift/.swift-signature
   echo "$(create_package_signature)" > $CACHE_DIR/swift/.package-signature
   echo "$(create_pins_signature)" > $CACHE_DIR/swift/.pins-signature
+
+  echo saving_pinsignatures1
+  echo "$(create_pins_signature)"
+  echo saving_pinsignatures2
 }
 
 load_swift_signature() {
