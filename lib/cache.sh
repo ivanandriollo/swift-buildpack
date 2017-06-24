@@ -66,6 +66,14 @@ get_cache_status() {
   elif [ "$(create_package_signature)" != "$(load_packages_signature)" ]; then
     echo "new package signature"
   elif [[ ! -z "$(create_pins_signature)" ]] && [ "$(create_pins_signature)" != "$(load_pins_signature)" ]; then
+    ##
+    echo TEST1
+    echo "$(create_pins_signature)"
+    echo TEST1
+    echo TEST2
+    echo "$(load_pins_signature)"
+    echo TEST2
+    ##
     echo "new pins signature"
   else
     echo "valid"
