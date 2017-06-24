@@ -367,7 +367,7 @@ bx app env-set <app_name> SWIFT_BUILD_DIR_CACHE true
 bx app restage <app_name>
 ```
 
-Note that if at some point you change the contents of your `Package.swift` or `Package.pins` file, the buildpack will automatically refetch the dependencies and update the cache accordingly. Also, if you do not push a `Package.pins` file along with your application and you are using Swift 3.1 (or a later version), then caching of the `.build` folder will not occur. Therefore, it is highly recommended that you push a `Package.pins` file along with your application (if using Swift 3.1 or later).
+Note that if at some point you change the contents of your `Package.swift` or `Package.pins` file, the buildpack will automatically refetch the dependencies and update the cache accordingly. Also, if you do not initially push a `Package.pins` file along with your application and you are using Swift 3.1 (or a later version), a new `Package.pins` file will be generated. It is recommended that you always push a `Package.pins` file along with your application (if using Swift 3.1 or later).
 
 ### Debugging
 

@@ -242,12 +242,13 @@ cp $SWIFT_PATH/usr/lib/*.so.* $BUILD_DIR/.swift-lib
 status "Copying binaries to 'bin'"
 find $BUILD_DIR/.build/$BUILD_CONFIGURATION -type f -perm /a+x -exec cp {} $BUILD_DIR/.swift-bin \;
 
-####
+# ----------------------------------------------------------------------------- #
+# Generate Package.pins if there is not one.                                    #
+# ----------------------------------------------------------------------------- #
 if [[ ! -f $BUILD_DIR/Package.pins ]]; then
   swift package pin --all
   status "Generated Package.pins"
 fi
-###
 
 # ----------------------------------------------------------------------------- #
 # Copy Packages folder from BUILD_DIR to CACHE_DIR                              #
