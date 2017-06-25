@@ -43,16 +43,14 @@ push_application () {
 		cf push -b https://github.com/IBM-Swift/swift-buildpack.git#$TRAVIS_BRANCH
 		ELAPSED_TIME=$(($SECONDS - $START_TIME))
 
-		if [ "$DELETE_FLAG" = true ]; then
-			cf delete $APPLICATION_DIR -r -f
-		fi
-
 		echo "$APPLICATION_DIR took $ELAPSED_TIME seconds."
 
 		if [ "$ELAPSED_TIME" -lt "$TIMEOUT" ]; then
-			echo "Application was under threshold value."
+			echo "Provisioning of $APPLICATION_DIR was under threshold value."
 			RETVAL=0
 			break
+		elif [ "$DELETE_FLAG" = true ]; then
+			cf delete $APPLICATION_DIR -r -f
 		fi
 
 		echo "$APPLICATION_DIR took longer than the threshold value."
@@ -71,11 +69,13 @@ cd ..
 
 # Verify 200 from application route status code
 cf app $APPLICATION_DIR
+# Compute URL value
 url=$(cf app $APPLICATION_DIR | grep routes:)
 url=${url#routes: }
+url=${s//[[:blank:]]/}
 echo "$APPLICATION_DIR route assignment: $url"
-status=$(curl -s -o /dev/null -w '%{http_code}' ${url})
-echo "$APPLICATION_DIR route status:  $status"
+status=$(curl -s -o /dev/null -w '%{http_code}' $url)
+echo "$APPLICATION_DIR route status: $status"
 [ "$status" = 200 ] ; url_success=$?
 
 ! (( $passed | $passed_repush | $url_success ));
