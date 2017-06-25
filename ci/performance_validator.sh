@@ -72,7 +72,7 @@ cf app $APPLICATION_DIR
 # Compute URL value
 url=$(cf app $APPLICATION_DIR | grep routes:)
 url=${url#routes: }
-url=${s//[[:blank:]]/}
+url=${url//[[:blank:]]/}
 echo "$APPLICATION_DIR route assignment: $url"
 status=$(curl -s -o /dev/null -w '%{http_code}' $url)
 echo "$APPLICATION_DIR route status: $status"
