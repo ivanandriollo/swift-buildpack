@@ -1,6 +1,6 @@
 #!/bin/bash
 ##
-# Copyright IBM Corporation 2016
+# Copyright IBM Corporation 2016,2017
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -72,9 +72,10 @@ cd ..
 # Verify 200 from application route status code
 cf app $APPLICATION_DIR
 url=$(cf app $APPLICATION_DIR | grep routes:)
-echo "Obtained $APPLICATION_DIR route assignment: $url"
-status=$(curl -s -o /dev/null -w '%{http_code}' ${url#routes: })
-echo "cURL $APPLICATION_DIR route status:  $status"
+url=${url#routes: }
+echo "$APPLICATION_DIR route assignment: $url"
+status=$(curl -s -o /dev/null -w '%{http_code}' ${url})
+echo "$APPLICATION_DIR route status:  $status"
 [ "$status" = 200 ] ; url_success=$?
 
 ! (( $passed | $passed_repush | $url_success ));
