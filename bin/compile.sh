@@ -244,11 +244,20 @@ find $BUILD_DIR/.build/$BUILD_CONFIGURATION -type f -perm /a+x -exec cp {} $BUIL
 
 # ----------------------------------------------------------------------------- #
 # Generate Package.pins if there is not one.                                    #
+# Applicable to Swift 3.1 (or later).                                           #
 # ----------------------------------------------------------------------------- #
-if [[ ! -f $BUILD_DIR/Package.pins ]]; then
-  swift package pin --all
-  status "Generated Package.pins"
-fi
+generate_pins_file() {
+  if [[ ! -f $BUILD_DIR/Package.pins ]]; then
+    local swift_version="$(get_swift_version_from_cli)"
+    if [ $(echo "$swift_version>=3.1" | bc) == 1 ]; then
+      swift package pin --all
+      status "Generated Package.pins (Swift $swift_version)"
+    else
+      status "Skipping generation of Package.pins (Swift $swift_version)"
+    fi
+  fi
+}
+generate_pins_file
 
 # ----------------------------------------------------------------------------- #
 # Copy Packages folder from BUILD_DIR to CACHE_DIR                              #
@@ -268,6 +277,7 @@ cache_build() {
 }
 # Cache packages before removing '.build' directory
 cache_build
+
 #status "Cleaning up build files"
 #rm -rf $BUILD_DIR/.build
 

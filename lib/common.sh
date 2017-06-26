@@ -162,3 +162,8 @@ get_swift_version() {
   fi
   echo $swift_version
 }
+
+get_swift_version_from_cli() {
+  local swift_version=$(swift -version | cut -d " " -f 3 | cut -d '-' -f1)
+  echo $swift_version
+}
