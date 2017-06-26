@@ -249,7 +249,7 @@ find $BUILD_DIR/.build/$BUILD_CONFIGURATION -type f -perm /a+x -exec cp {} $BUIL
 generate_pins_file() {
   if [[ ! -f $BUILD_DIR/Package.pins ]]; then
     local swift_version="$(get_swift_version_from_cli)"
-    if [ $(echo "$swift_version>=3.1" | bc) == 1 ]; then
+    if [ $(echo $swift_version 3.1 | awk '{ print ($1 >= $2) ? "true" : "false" }') == "true" ]; then
       swift package pin --all
       status "Generated Package.pins (Swift $swift_version)"
     else
