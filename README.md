@@ -384,7 +384,7 @@ bx app env-unset <app_name> BP_DEBUG
 ```
 
 ### Installing Personal Package Archives
-The Bluemix buildpack for Swift does not support installing [Personal Package Archives](https://launchpad.net/ubuntu/+ppas) (PPAs). If your application requires the installation of one or more PPAs, we recommend using a different mechanism other than the Bluemix buildpack for Swift for provisioning your application to the Bluemix cloud. For instance, you could use [Docker and Kubernetes](https://console.bluemix.net/docs/containers/container_index.html) to provision your Swift application to Bluemix (in your `Dockerfile`, you would add the instructions for installing any necessary PPAs).
+The Bluemix buildpack for Swift does not support the installation of [Personal Package Archives](https://launchpad.net/ubuntu/+ppas) (PPAs). If your application requires the installation of one or more PPAs, we recommend using a different mechanism other than the Bluemix buildpack for Swift for provisioning your application to the Bluemix cloud. For instance, you could use [Docker and Kubernetes](https://console.bluemix.net/docs/containers/container_index.html) to provision your Swift application to Bluemix (in your `Dockerfile`, you would add the instructions for installing any necessary PPAs).
 
 Admin tasks
 -----------
