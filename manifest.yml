@@ -61,3 +61,6 @@ exclude_files:
   - cf_build/
   - .travis.yml
   - ci/
+  - coverage/
+  - servicemanifest.json
+  - credentials-buildpack-test
