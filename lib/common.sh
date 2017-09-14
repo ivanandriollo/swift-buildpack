@@ -130,15 +130,37 @@ download_packages() {
   if [ ${#packages[@]} -eq 0 ]; then
     status "No additional packages to download."
   else
+    # Download one package at a time to highlight any failures
+    for package in "${packages[@]}"; do
+      status "Fetching .deb for $package"
+      if [ "$APT_PCKGS_LIST_UPDATED" = false ] ; then
+        apt-get $APT_OPTIONS update | indent
+        APT_PCKGS_LIST_UPDATED=true
+      fi
+      # Continue execution even if we fail to download a system package
+      # Separate the declaration of downloadOutput from its initialization
+      # (needed in order to get the actual return code value)
+      local downloadOutput
+      set +e
+      downloadOutput=$(apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $package 2>&1)
+      local returnCode=$(echo $?)
+      set -e
+      echo "$downloadOutput" | indent
+      if [ $returnCode -ne 0 ]; then
+        status "WARNING: Failed to download DEB file for $package. Application may fail to start (see above for details)."
+      else
+        status "Downloaded DEB file for $package" 
+      fi
+    done
     # Turn string array into a space delimited string
-    packages="$(join_by_whitespace ${packages[@]})"
-    status "Fetching .debs for: $packages"
-    if [ "$APT_PCKGS_LIST_UPDATED" = false ] ; then
-      apt-get $APT_OPTIONS update | indent
-      APT_PCKGS_LIST_UPDATED=true
-    fi
-    apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages | indent
-    status "Downloaded DEB files..."
+    #packages="$(join_by_whitespace ${packages[@]})"
+    #status "Fetching .debs for: $packages"
+    #if [ "$APT_PCKGS_LIST_UPDATED" = false ] ; then
+    #  apt-get $APT_OPTIONS update | indent
+    #  APT_PCKGS_LIST_UPDATED=true
+    #fi
+    #apt-get $APT_OPTIONS -y --force-yes -d install --reinstall $packages | indent
+    #status "Downloaded DEB files..."
   fi
 }
 
