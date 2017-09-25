@@ -15,7 +15,7 @@
 ##
 
 # Global/common vars
-DEFAULT_SWIFT_VERSION=3.1.1
+DEFAULT_SWIFT_VERSION=4.0
 CLANG_VERSION=4.0.0
 
 error() {
@@ -188,4 +188,10 @@ get_swift_version() {
 get_swift_version_from_cli() {
   local swift_version=$(swift -version | cut -d " " -f 3 | cut -d '-' -f1)
   echo $swift_version
+}
+
+is_swift_version_greater_or_equal_to() {
+  target_version=$1
+  local swift_version="$(get_swift_version_from_cli)"
+  echo $swift_version $target_version | awk '{ print ($1 >= $2) ? "true" : "false" }'
 }
