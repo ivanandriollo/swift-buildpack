@@ -43,7 +43,7 @@ source $BP_DIR/compile-extensions/lib/common
 # Check environment support
 $BP_DIR/compile-extensions/bin/check_stack_support
 # Load convenience functions like status(), echo(), and indent()
-source $BP_DIR/lib/common.sh
+source ${BP_DIR}/lib/common.sh
 # Load caching functions
 source ${BP_DIR}/lib/cache.sh
 # Load app management extension
