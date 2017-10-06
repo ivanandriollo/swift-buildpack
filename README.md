@@ -1,6 +1,6 @@
 [![Build Status - Develop](https://travis-ci.org/IBM-Swift/swift-buildpack.svg?branch=develop)](https://travis-ci.org/IBM-Swift/swift-buildpack)
 
-IBM Bluemix buildpack for Swift
+IBM Cloud buildpack for Swift
 ===============================
 
 This is the Bluemix buildpack for Swift applications, powered by the Swift Package Manager (SPM). Though this buildpack was developed mainly for Bluemix and the sample commands use the Bluemix [command line](http://clis.ng.bluemix.net/ui/home.html), it can be used on any Cloud Foundry environment. This buildpack requires access to the Internet for downloading and installing several system level dependencies.
