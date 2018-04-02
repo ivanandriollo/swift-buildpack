@@ -15,7 +15,7 @@
 ##
 
 # Global/common vars
-DEFAULT_SWIFT_VERSION=4.0.3
+DEFAULT_SWIFT_VERSION=4.1
 CLANG_VERSION=4.0.0
 
 error() {
@@ -149,7 +149,7 @@ download_packages() {
       if [ $returnCode -ne 0 ]; then
         status "WARNING: Failed to download DEB file for $package. Application may fail to start (see above for details)."
       else
-        status "Downloaded DEB file for $package" 
+        status "Downloaded DEB file for $package"
       fi
     done
     # Turn string array into a space delimited string
