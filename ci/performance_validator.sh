@@ -28,11 +28,11 @@ push_application () {
 	local RETVAL=1
 
 	if [ "$DELETE_FLAG" = true ]; then
-		echo "Executing cf push tests..."
+		echo "Executing ibmcloud push tests..."
 		echo "Clearing out any previous instances of: $APPLICATION_DIR"
-		cf delete $APPLICATION_DIR -r -f
+		ibmcloud app delete $APPLICATION_DIR -r -f
 	else
-		echo "Executing cf re-push tests..."
+		echo "Executing ibmcloud re-push tests..."
 	fi
 
 	echo "$APPLICATION_DIR threshold value is: $TIMEOUT"
@@ -40,7 +40,7 @@ push_application () {
 
 	for num in `seq 1 $TIMES_TO_REPEAT`; do
 		START_TIME=$SECONDS
-		cf push -b https://github.com/IBM-Swift/swift-buildpack.git#$TRAVIS_BRANCH
+		ibmcloud app push -b https://github.com/IBM-Swift/swift-buildpack.git#$TRAVIS_BRANCH
 		ELAPSED_TIME=$(($SECONDS - $START_TIME))
 
 		echo "$APPLICATION_DIR took $ELAPSED_TIME seconds."
@@ -50,7 +50,7 @@ push_application () {
 			RETVAL=0
 			break
 		elif [ "$DELETE_FLAG" = true ]; then
-			cf delete $APPLICATION_DIR -r -f
+			ibmcloud app delete $APPLICATION_DIR -r -f
 		fi
 
 		echo "$APPLICATION_DIR took longer than the threshold value."
@@ -72,7 +72,7 @@ if [ $passed -ne 0 ] || [ $passed_repush -ne 0 ]; then
 	exit 1
 fi
 
-cf app $APPLICATION_DIR
+ibmcloud app show $APPLICATION_DIR
 
 # Unfortunately, attempting to validate the http code
 # sometimes results in false positives, which fails our CI builds.
