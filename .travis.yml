@@ -1,7 +1,6 @@
 language: ruby
 dist: trusty
-
-dist: trusty
+sudo: required
 
 rvm:
   - "2.4"
@@ -15,13 +14,8 @@ before_install:
   - gem install bundler
   - bundle install
   - bundle exec rake
-  - wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-  - echo "deb http://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-  - sudo apt-get update
-  - sudo apt-get install cf-cli=6.26.0
-  - export CF_DIAL_TIMEOUT=30
-  - cf version
-  - cf login -a https://$BLUEMIX_REGION -u $BLUEMIX_USER -p $BLUEMIX_PASS -s applications-ci -o $BLUEMIX_USER
+  - curl -fsSL https://clis.ng.bluemix.net/install/linux | sh
+  - ibmcloud login -a https://$BLUEMIX_REGION --apikey $BLUEMIX_APIKEY -s applications-ci -o $BLUEMIX_USER
   # Clone test repos
   - git clone https://github.com/IBM-Bluemix/Kitura-Starter
   - git clone -b bluemix-estado https://github.com/IBM-Bluemix/swift-helloworld.git

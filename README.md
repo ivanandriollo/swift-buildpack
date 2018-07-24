@@ -13,8 +13,8 @@ Usage
 Example usage (see the [Specify a Swift version](#specify-a-swift-version) section):
 
 ```shell
-$ bx app push
-Invoking 'cf push'...
+$ ibmcloud app push
+Invoking 'ibmcloud app push'...
 
 Using manifest file /Users/olivieri/git/Kitura-Starter/manifest.yml
 
@@ -36,8 +36,8 @@ OK
 Starting app Kitura-Starter in org roliv@us.ibm.com / space dev as roliv@us.ibm.com...
 -----> Downloaded app package (28K)
 Cloning into '/tmp/buildpacks/swift-buildpack'...
------> Buildpack version 2.0.12
------> Default supported Swift version is 4.1.1
+-----> Buildpack version 2.0.13
+-----> Default supported Swift version is 4.1.2
 -----> Configure for apt-get installs...
 -----> Downloading system level dependencies...
 -----> Fetching .debs for: libicu-dev libcurl4-openssl-dev
@@ -181,12 +181,12 @@ The buildpack will detect your app as Swift if it has a `Package.swift` file in 
 
 ### Version installed on the IBM Cloud
 
-The latest version of the IBM Cloud buildpack for Swift on the IBM Cloud is [v2.0.12](https://github.com/IBM-Swift/swift-buildpack/releases/tag/2.0.12).
+The latest version of the IBM Cloud buildpack for Swift on the IBM Cloud is [v2.0.13](https://github.com/IBM-Swift/swift-buildpack/releases/tag/2.0.13).
 
-Please note that it is possible that the latest buildpack code contained in this repo hasn't yet been installed on the IBM Cloud. If that happens to be the case and you'd like to leverage the latest buildpack code, you can do so by adding the `-b https://github.com/IBM-Swift/swift-buildpack` parameter to the `bx app push` command, as shown below:
+Please note that it is possible that the latest buildpack code contained in this repo hasn't yet been installed on the IBM Cloud. If that happens to be the case and you'd like to leverage the latest buildpack code, you can do so by adding the `-b https://github.com/IBM-Swift/swift-buildpack` parameter to the `ibmcloud app push` command, as shown below:
 
 ```shell
-bx app push -b https://github.com/IBM-Swift/swift-buildpack
+ibmcloud app push -b https://github.com/IBM-Swift/swift-buildpack
 ```
 
 ### Procfile
@@ -223,7 +223,7 @@ command: <executable_name>
 
 ### What is the latest version of Swift supported?
 
-The latest version of Swift supported by this buildpack is ```4.1.1```.
+The latest version of Swift supported by this buildpack is ```4.1.2```.
 
 ### Specify a Swift version
 
@@ -231,13 +231,13 @@ You specify the version of Swift for your application using a `.swift-version` f
 
 ```shell
 $ cat .swift-version
-4.1.1
+4.1.2
 ```
 
 Please note that the swift_buildpack installed on the IBM Cloud **caches** the following versions of the Swift binaries:
 
+- `4.1.2`
 - `4.1.1`
-- `4.0.3`
 
 If you'd like to use a different version of Swift [that is not cached] on the IBM Cloud, you can specify it in the `.swift-version` file.  Please be aware that using a Swift version that is not cached increases the provisioning time of your app on the IBM Cloud.
 
@@ -353,18 +353,18 @@ Previous versions of this buildpack provided the [libdispatch](https://github.co
 
 ### Caching of the .build directory
 
-Following the release of Swift 3.1, the IBM Cloud buildpack for Swift caches the contents of the `.build` folder to speed up the provisioning of your application the next time you execute the `bx app push` command. If you'd prefer not to use this caching mechanism, you can disable it by executing the following command:
+Following the release of Swift 3.1, the IBM Cloud buildpack for Swift caches the contents of the `.build` folder to speed up the provisioning of your application the next time you execute the `ibmcloud app push` command. If you'd prefer not to use this caching mechanism, you can disable it by executing the following command:
 
 ```shell
-bx app env-set <app_name> SWIFT_BUILD_DIR_CACHE false
-bx app restage <app_name>
+ibmcloud app env-set <app_name> SWIFT_BUILD_DIR_CACHE false
+ibmcloud app restage <app_name>
 ```
 
 If at some point, you'd like to re-enable caching of the `.build` folder, you can do so by executing:
 
 ```shell
-bx app env-set <app_name> SWIFT_BUILD_DIR_CACHE true
-bx app restage <app_name>
+ibmcloud app env-set <app_name> SWIFT_BUILD_DIR_CACHE true
+ibmcloud app restage <app_name>
 ```
 
 Note that if at some point you change the contents of your `Package.swift` or `Package.resolved` (or `Package.pins` for older versions of Swift) file, the buildpack will automatically refetch the dependencies and update the cache accordingly. Also, if you do not initially push a `Package.resolved` file along with your application and you are using Swift 4.0 (or a later version), a new `Package.resolved` file will be generated. It is recommended that you always push a `Package.resolved` file along with your application (if using Swift 4.0 or later).
@@ -374,13 +374,13 @@ Note that if at some point you change the contents of your `Package.swift` or `P
 If the buildpack preparation or compilation steps are failing, you can enable some debugging using the following command:
 
 ```shell
-bx app env-set <app_name> BP_DEBUG true
+ibmcloud app env-set <app_name> BP_DEBUG true
 ```
 
 To deactivate:
 
 ```shell
-bx app env-unset <app_name> BP_DEBUG
+ibmcoud app env-unset <app_name> BP_DEBUG
 ```
 
 ### Installing Personal Package Archives
@@ -392,15 +392,15 @@ Admin tasks
 To install this buildpack:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.12/buildpack_swift_v2.0.12-20180510-1828.zip
-bx cf create-buildpack swift_buildpack buildpack_swift_v2.0.12-20180510-1828.zip <position>
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.13/buildpack_swift_v2.0.13-20180720-1608.zip
+ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.13-20180720-1608.zip <position>
 ```
 
 And to update it:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.12/buildpack_swift_v2.0.12-20180510-1828.zip
-bx cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.12-20180510-1828.zip
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.13/buildpack_swift_v2.0.13-20180720-1608.zip
+ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.13-20180720-1608.zip
 ```
 
 For more details on installing buildpacks, see [Adding buildpacks to Cloud Foundry](https://docs.cloudfoundry.org/adminguide/buildpacks.html).
