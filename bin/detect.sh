@@ -29,7 +29,7 @@ source $BP_DIR/lib/common.sh
 if [[ -f $APP_DIR/Package.swift ]]; then
   swift_version="$(get_swift_version)"
   buildpack_version="$(cat $BP_DIR/VERSION)"
-  echo "IBM Bluemix buildpack for Swift (Swift: $swift_version, buildpack: $buildpack_version)" && exit 0
+  echo "IBM Cloud buildpack for Swift (Swift: $swift_version, buildpack: $buildpack_version)" && exit 0
 else
   echo "no" && exit 1
 fi

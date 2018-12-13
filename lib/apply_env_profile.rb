@@ -24,5 +24,5 @@ begin
   log_env = !ENV['BP_LOG'].nil? && 'true'.casecmp(ENV['BP_LOG']).zero?
   EnvProfileApplier.new(build_dir, log_env).apply_env_profile
 rescue
-  puts '-----> WARN: Failed to apply Bluemix environment profiles'
+  puts '-----> WARN: Failed to apply IBM Cloud environment profiles'
 end

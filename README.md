@@ -3,9 +3,9 @@
 IBM Cloud buildpack for Swift
 ===============================
 
-This is the IBM Cloud buildpack for Swift applications, powered by the Swift Package Manager (SPM). Though this buildpack was developed mainly for IBM Cloud and the sample commands use the IBM Cloud [command line](http://clis.ng.bluemix.net/ui/home.html), it can be used on any Cloud Foundry environment. This buildpack requires access to the Internet for downloading and installing several system level dependencies.
+This is the IBM Cloud buildpack for Swift applications, powered by the Swift Package Manager (SPM). Though this buildpack was developed mainly for IBM Cloud and the sample commands use the IBM Cloud [command line](https://clis.cloud.ibm.com/ui/home.html), it can be used on any Cloud Foundry environment. This buildpack requires access to the Internet for downloading and installing several system level dependencies.
 
-Check out the [Kitura-Starter](https://github.com/IBM-Bluemix/Kitura-Starter) for a fully working example of a Kitura-based server application that can be deployed to the IBM Cloud (or any Cloud Foundry environment).
+Check out the [Kitura-Starter](https://github.com/IBM-Cloud/Kitura-Starter) for a fully working example of a Kitura-based server application that can be deployed to the IBM Cloud (or any Cloud Foundry environment).
 
 Usage
 -----
@@ -128,8 +128,6 @@ warning: unable to rmdir Package-Builder: Directory not empty
        Cloning https://github.com/IBM-Swift/Swift-cfenv.git
        HEAD is now at 3486dcb Modified parseEnvVariable() method - using now environment variables if present regardless of isLocal boolean.
        Resolved version: 1.7.1
-       Cloning https://github.com/IBM-Bluemix/cf-deployment-tracker-client-swift.git
-       Resolved version: 0.4.1
        Compile CHTTPParser utils.c
        Compile CHTTPParser http_parser.c
        Compile Swift Module 'Socket' (3 sources)
@@ -140,7 +138,6 @@ warning: unable to rmdir Package-Builder: Directory not empty
        Compile Swift Module 'SSLService' (1 sources)
        Compile Swift Module 'CloudFoundryEnv' (7 sources)
        Compile Swift Module 'KituraNet' (28 sources)
-       Compile Swift Module 'CloudFoundryDeploymentTracker' (1 sources)
        Compile Swift Module 'Kitura' (40 sources)
        Compile Swift Module 'Kitura_Starter' (2 sources)
        Linking ./.build/release/Kitura-Starter
@@ -384,7 +381,7 @@ ibmcoud app env-unset <app_name> BP_DEBUG
 ```
 
 ### Installing Personal Package Archives
-The IBM Cloud buildpack for Swift does not support the installation of [Personal Package Archives](https://launchpad.net/ubuntu/+ppas) (PPAs). If your application requires the installation of one or more PPAs, we recommend using a different mechanism other than the IBM Cloud buildpack for Swift for provisioning your application to the IBM Cloud. For instance, you could use [Docker and Kubernetes](https://console.bluemix.net/docs/containers/container_index.html) to provision your Swift application to the IBM Cloud (in your `Dockerfile`, you would add the instructions for installing any necessary PPAs).
+The IBM Cloud buildpack for Swift does not support the installation of [Personal Package Archives](https://launchpad.net/ubuntu/+ppas) (PPAs). If your application requires the installation of one or more PPAs, we recommend using a different mechanism other than the IBM Cloud buildpack for Swift for provisioning your application to the IBM Cloud. For instance, you could use [Docker and Kubernetes](https://cloud.ibm.com/docs/containers/container_index.html) to provision your Swift application to the IBM Cloud (in your `Dockerfile`, you would add the instructions for installing any necessary PPAs).
 
 Admin tasks
 -----------
