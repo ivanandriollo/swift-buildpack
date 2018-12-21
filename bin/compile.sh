@@ -36,7 +36,7 @@ SWIFT_BUILD_DIR=.build
 # If leveraging CACHE_DIR for tar files, then we'd need CACHED_ITEMS
 #CACHED_ITEMS=()
 
-# Apply Bluemix-specific environment configuration profile
+# Apply IBM Cloud-specific environment configuration profile
 $BP_DIR/lib/apply_env_profile.rb $BUILD_DIR
 
 source $BP_DIR/compile-extensions/lib/common
@@ -192,7 +192,7 @@ cd $BUILD_DIR
 status "Fetching Swift packages and parsing Package.swift files..."
 if [ $(is_swift_version_greater_or_equal_to 4.0) == "true" ]; then
   swift package resolve | indent
-else  
+else
   swift package fetch | indent
 fi
 PACKAGES_TO_INSTALL=($(set +o pipefail;find . -type f -name "Package.swift" | xargs egrep -r "Apt *\(" | sed -e 's/^.*\.Apt *( *" *//' -e 's/".*$//' | sort | uniq; set -o pipefail))

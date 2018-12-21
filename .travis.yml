@@ -14,11 +14,11 @@ before_install:
   - gem install bundler
   - bundle install
   - bundle exec rake
-  - curl -fsSL https://clis.ng.bluemix.net/install/linux | sh
+  - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
   - ibmcloud login -a https://$BLUEMIX_REGION --apikey $BLUEMIX_APIKEY -s applications-ci -o $BLUEMIX_USER
   # Clone test repos
-  - git clone https://github.com/IBM-Bluemix/Kitura-Starter
-  - git clone -b bluemix-estado https://github.com/IBM-Bluemix/swift-helloworld.git
+  - git clone https://github.com/IBM-Cloud/Kitura-Starter
+  - git clone -b bluemix-estado https://github.com/IBM-Cloud/swift-helloworld.git
   - git clone https://$GHE_USER:$GHE_TOKEN@github.ibm.com/IBM-Swift/credentials-buildpack-test.git
 
 script:
