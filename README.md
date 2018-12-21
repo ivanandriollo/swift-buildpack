@@ -389,15 +389,15 @@ Admin tasks
 To install this buildpack:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.16/buildpack_swift_v2.0.16-20180920-0051.zip
-ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.16-20180920-0051.zip <position>
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.16/buildpack_swift_v2.0.16-20181214-0434.zip
+ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.16-20181214-0434.zip <position>
 ```
 
 And to update it:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.16/buildpack_swift_v2.0.16-20180920-0051.zip
-ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.16-20180920-0051.zip
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.16/buildpack_swift_v2.0.16-20181214-0434.zip
+ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.16-20181214-0434.zip
 ```
 
 For more details on installing buildpacks, see [Adding buildpacks to Cloud Foundry](https://docs.cloudfoundry.org/adminguide/buildpacks.html).
