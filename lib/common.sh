@@ -1,5 +1,5 @@
 ##
-# Copyright IBM Corporation 2016,2017
+# Copyright IBM Corporation 2016, 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 ##
 
 # Global/common vars
-DEFAULT_SWIFT_VERSION=4.2.3
+DEFAULT_SWIFT_VERSION=5.0
 CLANG_VERSION=4.0.0
 
 error() {

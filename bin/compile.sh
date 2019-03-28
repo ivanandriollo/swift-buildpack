@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 ##
-# Copyright IBM Corporation 2016,2017
+# Copyright IBM Corporation 2016, 2019
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -251,7 +251,8 @@ status "Bin path: $BIN_PATH"
 
 # These should be statically linked, seems a Swift bug.
 status "Copying dynamic libraries"
-cp $SWIFT_PATH/usr/lib/swift/linux/*.so $BUILD_DIR/.swift-lib
+cp --preserve=links $SWIFT_PATH/usr/lib/swift/linux/*.so $BUILD_DIR/.swift-lib
+cp --preserve=links $SWIFT_PATH/usr/lib/swift/linux/*.so.* $BUILD_DIR/.swift-lib
 cp $BIN_PATH/*.so $BUILD_DIR/.swift-lib 2>/dev/null || true
 # Copying additional dynamic libraries
 cp $SWIFT_PATH/usr/lib/*.so $BUILD_DIR/.swift-lib
