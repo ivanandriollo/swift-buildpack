@@ -252,11 +252,11 @@ status "Bin path: $BIN_PATH"
 # These should be statically linked, seems a Swift bug.
 status "Copying dynamic libraries"
 cp --preserve=links $SWIFT_PATH/usr/lib/swift/linux/*.so $BUILD_DIR/.swift-lib
-cp --preserve=links -f $SWIFT_PATH/usr/lib/swift/linux/*.so.* $BUILD_DIR/.swift-lib
+cp --preserve=links $SWIFT_PATH/usr/lib/swift/linux/*.so.* $BUILD_DIR/.swift-lib 2>/dev/null || true
 cp $BIN_PATH/*.so $BUILD_DIR/.swift-lib 2>/dev/null || true
 # Copying additional dynamic libraries
 cp $SWIFT_PATH/usr/lib/*.so $BUILD_DIR/.swift-lib
-cp -f $SWIFT_PATH/usr/lib/*.so.* $BUILD_DIR/.swift-lib
+cp $SWIFT_PATH/usr/lib/*.so.* $BUILD_DIR/.swift-lib 2>/dev/null || true
 
 status "Copying binaries to 'bin'"
 find $BIN_PATH -type f -perm /a+x -exec cp {} $BUILD_DIR/.swift-bin \;
