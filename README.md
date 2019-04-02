@@ -389,8 +389,8 @@ Admin tasks
 To install this buildpack:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.20/buildpack_swift_v2.0.20-20190328-0046.zip
-ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.20-20190328-0046.zip <position>
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.20/buildpack_swift_v2.0.20-20190401-2122.zip
+ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.20-20190401-2122.zip <position>
 ```
 
 **Position** is a positive integer, sets priority, and is sorted from lowest to highest when listed using the `ibmcloud cf buildpacks` command.
@@ -398,8 +398,8 @@ ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.20-20190328-00
 And to update it:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.20/buildpack_swift_v2.0.20-20190328-0046.zip
-ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.20-20190328-0046.zip
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.20/buildpack_swift_v2.0.20-20190401-2122.zip
+ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.20-20190401-2122.zip
 ```
 
 For more details on installing buildpacks, see [Adding buildpacks to Cloud Foundry](https://docs.cloudfoundry.org/adminguide/buildpacks.html).
