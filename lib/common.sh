@@ -16,7 +16,7 @@
 
 # Global/common vars
 DEFAULT_SWIFT_VERSION=5.0
-CLANG_VERSION=4.0.0
+CLANG_VERSION=8.0.0
 
 error() {
   echo " !     $*" >&2
