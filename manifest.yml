@@ -27,22 +27,22 @@ url_to_dependency_map:
 dependencies:
   - name: swift
     version: 5.0
-    uri: https://swift.org/builds/swift-5.0-release/ubuntu1404/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu14.04.tar.gz
-    md5: 9e7056ae2b05509b99e064da532a8abb
+    uri: https://swift.org/builds/swift-5.0-release/ubuntu1404/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu18.04.tar.gz
+    md5: b583286680f61159b98e38f79e47b104
     cf_stacks:
-      - cflinuxfs2
+      - cflinuxfs3
   - name: swift
     version: 4.2.4
-    uri: https://swift.org/builds/swift-4.2.4-release/ubuntu1404/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-ubuntu14.04.tar.gz
-    md5: ed6eaf69989778149698f2cdac13d166
+    uri: https://swift.org/builds/swift-4.2.4-release/ubuntu1404/swift-4.2.4-RELEASE/swift-4.2.4-RELEASE-ubuntu18.04.tar.gz
+    md5: 93df78deb6f3d8768014efefa36a73d0
     cf_stacks:
-      - cflinuxfs2
+      - cflinuxfs3
   - name: clang
-    version: 4.0.0
-    uri: http://releases.llvm.org/4.0.0/clang+llvm-4.0.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-    md5: 6fb53a94111e11ade89da2a260b59e98
+    version: 8.0.0
+    uri: http://releases.llvm.org/8.0.0/clang+llvm-8.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+    md5: 3137dad7c085b452b652143ef2a5df09
     cf_stacks:
-      - cflinuxfs2
+      - cflinuxfs3
 
 exclude_files:
   - .git/
