@@ -220,7 +220,7 @@ command: <executable_name>
 
 ### What is the latest version of Swift supported?
 
-The latest version of Swift supported by this buildpack is ```5.0```.
+The latest version of Swift supported by this buildpack is ```5.0.2```.
 
 ### Specify a Swift version
 
@@ -233,7 +233,7 @@ $ cat .swift-version
 
 Please note that the swift_buildpack installed on the IBM Cloud **caches** the following versions of the Swift binaries:
 
-- `5.0`
+- `5.0.2`
 - `4.2.4`
 
 If you'd like to use a different version of Swift [that is not cached] on the IBM Cloud, you can specify it in the `.swift-version` file.  Please be aware that using a Swift version that is not cached increases the provisioning time of your app on the IBM Cloud.

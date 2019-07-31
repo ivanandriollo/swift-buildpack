@@ -26,6 +26,12 @@ url_to_dependency_map:
 
 dependencies:
   - name: swift
+    version: 5.0.2
+    uri: https://swift.org/builds/swift-5.0.2-release/ubuntu1804/swift-5.0.2-RELEASE/swift-5.0.2-RELEASE-ubuntu18.04.tar.gz
+    sha256: 95c250699b0ddc1c16c5c18f833b5ca660ac651c5218773b2ff7c6f9157c94fb
+    cf_stacks:
+      - cflinuxfs3
+  - name: swift
     version: 5.0
     uri: https://swift.org/builds/swift-5.0-release/ubuntu1804/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu18.04.tar.gz
     sha256: aa7239f8f49b8dc36ad9f684c1f48dd539f97b877e5b228ff336749c208c8806
