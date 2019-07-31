@@ -15,7 +15,7 @@ before_install:
   - bundle install
   - bundle exec rake
   - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-  - ibmcloud login -a https://$BLUEMIX_REGION --apikey $BLUEMIX_APIKEY -s applications-ci -o $BLUEMIX_USER
+  - ibmcloud login -a https://$BLUEMIX_ENDPOINT --apikey $BLUEMIX_APIKEY -s applications-ci -o $BLUEMIX_USER -r $BLUEMIX_REGION
   # Clone test repos
   - git clone https://github.com/IBM-Cloud/Kitura-Starter
   - git clone -b bluemix-estado https://github.com/IBM-Cloud/swift-helloworld.git
