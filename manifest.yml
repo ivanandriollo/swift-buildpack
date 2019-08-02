@@ -32,9 +32,9 @@ dependencies:
     cf_stacks:
       - cflinuxfs3
   - name: swift
-    version: 5.0
-    uri: https://swift.org/builds/swift-5.0-release/ubuntu1804/swift-5.0-RELEASE/swift-5.0-RELEASE-ubuntu18.04.tar.gz
-    sha256: aa7239f8f49b8dc36ad9f684c1f48dd539f97b877e5b228ff336749c208c8806
+    version: 5.0.1
+    uri: https://swift.org/builds/swift-5.0.1-release/ubuntu1804/swift-5.0.1-RELEASE/swift-5.0.1-RELEASE-ubuntu18.04.tar.gz
+    sha256: 68aceff0bb0ba1f85b0e93e88936d66a527a525dc6b1a6c2e394480a871dd40e
     cf_stacks:
       - cflinuxfs3
   - name: swift
