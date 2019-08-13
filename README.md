@@ -47,7 +47,7 @@ Staging app and tracing logs...
    Cell b52d4499-f402-4b95-8ccc-75f95c8b518d successfully created container for instance 90754c9f-3c50-43a5-bdaa-80ad61cee7c3
    Downloading app package...
    Downloaded app package (30K)
-   -----> Buildpack version 2.2.0
+   -----> Buildpack version 2.1.1
    -----> Default supported Swift version is 5.0.2
    -----> Configure for apt-get installs...
    -----> Writing profile script...
@@ -182,7 +182,7 @@ The buildpack will detect your app as Swift if it has a `Package.swift` file in 
 
 ### Version installed on the IBM Cloud
 
-The latest version of the IBM Cloud buildpack for Swift on the IBM Cloud is [v2.1.0](https://github.com/IBM-Swift/swift-buildpack/releases/tag/2.1.0).
+The latest version of the IBM Cloud buildpack for Swift on the IBM Cloud is [v2.1.1](https://github.com/IBM-Swift/swift-buildpack/releases/tag/2.1.0).
 
 Please note that it is possible that the latest buildpack code contained in this repo hasn't yet been installed on the IBM Cloud. If that happens to be the case and you'd like to leverage the latest buildpack code, you can do so by adding the `-b https://github.com/IBM-Swift/swift-buildpack` parameter to the `ibmcloud app push` command, as shown below:
 
@@ -238,6 +238,7 @@ $ cat .swift-version
 Please note that the swift_buildpack installed on the IBM Cloud **caches** the following versions of the Swift binaries:
 
 - `5.0.2`
+- `5.0.1`
 - `4.2.4`
 
 If you'd like to use a different version of Swift [that is not cached] on the IBM Cloud, you can specify it in the `.swift-version` file.  Please be aware that using a Swift version that is not cached increases the provisioning time of your app on the IBM Cloud.
@@ -348,6 +349,12 @@ If you need to specify the path to header files for a system package installed b
 -Xcc -I$BUILD_DIR/.apt/usr/include/<path to header files>
 ```
 
+If you need to specify environment variables that apply during the build,, such as to enable [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO#using-kitura-nio), create a file with the name `.swift-build-env-linux` in the root project directory. Edit the file and add one environment variable per line. For example:
+```
+KITURA_NIO=1
+FOO=BAR
+```
+
 ### libdispatch
 
 Previous versions of this buildpack provided the [libdispatch](https://github.com/apple/swift-corelibs-libdispatch) binaries for Swift development builds **prior** to 2016-08-23. However, current and future versions of this buildpack will **not** provide those binaries. Users should upgrade their applications to Swift 3.0, which already includes the libdispatch binaries.
@@ -393,8 +400,8 @@ Admin tasks
 To install this buildpack:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.1.0/buildpack_swift_v2.1.0-20190401-2122.zip
-ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.1.0-20190401-2122.zip <position>
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.1.0/buildpack_swift_v2.1.1-20190805-1547.zip
+ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.1.1-20190805-1547.zip <position>
 ```
 
 **Position** is a positive integer, sets priority, and is sorted from lowest to highest when listed using the `ibmcloud cf buildpacks` command.
@@ -402,8 +409,8 @@ ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.1.0-20190401-212
 And to update it:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.1.0/buildpack_swift_v2.1.0-20190401-2122.zip
-ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.1.0-20190401-2122.zip
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.1.1/buildpack_swift_v2.1.1-20190805-1547.zip
+ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.1.1-20190805-1547.zip
 ```
 
 For more details on installing buildpacks, see [Adding buildpacks to Cloud Foundry](https://docs.cloudfoundry.org/adminguide/buildpacks.html).
