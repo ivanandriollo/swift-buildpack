@@ -16,169 +16,173 @@ Example usage (see the [Specify a Swift version](#specify-a-swift-version) secti
 $ ibmcloud app push
 Invoking 'ibmcloud app push'...
 
-Using manifest file /Users/olivieri/git/Kitura-Starter/manifest.yml
+Using manifest file /Users/gvalenc/git/Kitura-Starter/manifest.yml
 
-Creating app Kitura-Starter in org roliv@us.ibm.com / space dev as roliv@us.ibm.com...
-OK
+Getting app info...
+Creating app with these attributes...
++ name:         GV-Kitura-Starter
+  path:         /Users/gvalenc/git/Kitura-Starter
+  buildpacks:
++   https://github.com/IBM-Swift/swift-buildpack
++ command:      Kitura-Starter
++ disk quota:   1G
++ instances:    1
++ memory:       256M
+  routes:
++   gv-kitura-starter-chatty-shark.mybluemix.net
 
-Creating route kitura-starter-nonclamorous-pekin.mybluemix.net...
-OK
+Creating app GV-Kitura-Starter...
+Mapping routes...
+Comparing local files to remote cache...
+Packaging files to upload...
+Uploading files...
+ 29.97 KiB / 29.97 KiB [=================================================================] 100.00% 1s
 
-Binding kitura-starter-nonclamorous-pekin.mybluemix.net to Kitura-Starter...
-OK
-
-Uploading Kitura-Starter...
-Uploading app files from: /Users/olivieri/git/Kitura-Starter
-Uploading 56.3K, 16 files
-Done uploading               
-OK
-
-Starting app Kitura-Starter in org roliv@us.ibm.com / space dev as roliv@us.ibm.com...
------> Downloaded app package (28K)
-Cloning into '/tmp/buildpacks/swift-buildpack'...
------> Buildpack version 2.0.20
------> Default supported Swift version is 5.0
------> Configure for apt-get installs...
------> Downloading system level dependencies...
------> Fetching .debs for: libicu-dev libcurl4-openssl-dev
-Ign http://archive.ubuntu.com trusty InRelease
-Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
-Get:2 http://archive.ubuntu.com trusty-security InRelease [65.9 kB]
-Get:3 http://archive.ubuntu.com trusty Release.gpg [933 B]
-Get:4 http://archive.ubuntu.com trusty-updates/main amd64 Packages [1,139 kB]
-Get:5 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [501 kB]
-Get:6 http://archive.ubuntu.com trusty-updates/multiverse amd64 Packages [16.4 kB]
-Get:7 http://archive.ubuntu.com trusty Release [58.5 kB]
-Get:8 http://archive.ubuntu.com trusty-security/main amd64 Packages [675 kB]
-Get:9 http://archive.ubuntu.com trusty-security/universe amd64 Packages [185 kB]
-Get:10 http://archive.ubuntu.com trusty-security/multiverse amd64 Packages [5,083 B]
-Get:11 http://archive.ubuntu.com trusty/main amd64 Packages [1,743 kB]
-Get:12 http://archive.ubuntu.com trusty/universe amd64 Packages [7,589 kB]
-Get:13 http://archive.ubuntu.com trusty/multiverse amd64 Packages [169 kB]
-Fetched 12.2 MB in 23s (523 kB/s)
-Reading package lists...
-       Reading package lists...
-       Building dependency tree...
-       The following extra packages will be installed:
-         curl libcurl3
-       Suggested packages:
-         libcurl4-doc libcurl3-dbg
-       The following packages will be upgraded:
-         curl libcurl3 libcurl4-openssl-dev
-       3 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 77 not upgraded.
-       Need to get 8,129 kB of archives.
-       After this operation, 1,024 B of additional disk space will be used.
-       Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main curl amd64 7.35.0-1ubuntu2.9 [123 kB]
-       Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libcurl4-openssl-dev amd64 7.35.0-1ubuntu2.9 [245 kB]
-       Get:4 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libicu-dev amd64 52.1-3ubuntu0.4 [7,588 kB]
-       Fetched 8,129 kB in 14s (551 kB/s)
-       Download complete and in download only mode
------> Downloaded DEB files...
------> No Aptfile found.
------> Installing system level dependencies...
------> Installing curl_7.35.0-1ubuntu2.9_amd64.deb
------> Installing libcurl3_7.35.0-1ubuntu2.9_amd64.deb
------> Installing libcurl4-openssl-dev_7.35.0-1ubuntu2.9_amd64.deb
------> Installing libicu-dev_52.1-3ubuntu0.4_amd64.deb
------> Writing profile script...
------> Getting swift-3.0
-WARNING: Default supported Swift version: swift-3.0.1
-WARNING: Requested Swift version for your app: swift-3.0
-       Downloaded swift-3.0
------> Unpacking swift-3.0.tar.gz
------> Getting clang-3.8.0
-       Downloaded clang-3.8.0
------> Skipping cache restore (new swift signature)
------> Building Package...
-       Cloning https://github.com/IBM-Swift/Kitura.git
-       HEAD is now at 43d9c17 IBM-Swift/Kitura#788 Avoid converting JSON serialized Data to String and back to Data again. (#807)
-       Resolved version: 1.0.1
-       Cloning https://github.com/IBM-Swift/Kitura-net.git
-       HEAD is now at b61145f Merge pull request #126 from IBM-Swift/issue_784
-       Resolved version: 1.0.2
-       Cloning https://github.com/IBM-Swift/LoggerAPI.git
-       HEAD is now at d4c1682 Regenerated API Documentation (#15)
-       Resolved version: 1.0.0
-       Cloning https://github.com/IBM-Swift/BlueSocket.git
-       HEAD is now at 61d47f7 Update to latest (11/1) toolchain.
-       Resolved version: 0.11.39
-       Cloning https://github.com/IBM-Swift/CCurl.git
-       HEAD is now at 3cfb752 Add header callback helper function (#9)
-       Resolved version: 0.2.3
-       Cloning https://github.com/IBM-Swift/CHTTPParser.git
-       HEAD is now at 429eff6 Merge pull request #7 from ianpartridge/master
-       Resolved version: 0.3.0
-       Cloning https://github.com/IBM-Swift/BlueSSLService.git
-       HEAD is now at 6659ac8 Update to latest (11/1) toolchain.
-       Resolved version: 0.11.53
-       Resolved version: 0.2.2
-       Cloning https://github.com/IBM-Swift/CEpoll.git
-       HEAD is now at 111cbcb IBM-Swift/Kitura#435 Added a README.md file
-       Resolved version: 0.1.0
-       Cloning https://github.com/IBM-Swift/SwiftyJSON.git
-       HEAD is now at d8de7c8 Merge pull request #23 from IBM-Swift/issue_788
-       Resolved version: 14.2.1
-       Cloning https://github.com/IBM-Swift/Kitura-TemplateEngine.git
-       HEAD is now at f013da3 Regenerated API Documentation (#8)
-       Resolved version: 1.0.0
-       Cloning https://github.com/IBM-Swift/HeliumLogger.git
-warning: unable to rmdir Package-Builder: Directory not empty
-       HEAD is now at 4a52f0b updated dependency versions in Package.swift
-       Resolved version: 1.0.0
-       Cloning https://github.com/IBM-Swift/Swift-cfenv.git
-       HEAD is now at 3486dcb Modified parseEnvVariable() method - using now environment variables if present regardless of isLocal boolean.
-       Resolved version: 1.7.1
-       Compile CHTTPParser utils.c
-       Compile CHTTPParser http_parser.c
-       Compile Swift Module 'Socket' (3 sources)
-       Compile Swift Module 'LoggerAPI' (1 sources)
-       Compile Swift Module 'SwiftyJSON' (2 sources)
-       Compile Swift Module 'KituraTemplateEngine' (1 sources)
-       Linking CHTTPParser
-       Compile Swift Module 'SSLService' (1 sources)
-       Compile Swift Module 'CloudFoundryEnv' (7 sources)
-       Compile Swift Module 'KituraNet' (28 sources)
-       Compile Swift Module 'Kitura' (40 sources)
-       Compile Swift Module 'Kitura_Starter' (2 sources)
-       Linking ./.build/release/Kitura-Starter
------> Copying dynamic libraries
------> Copying binaries to 'bin'
------> Cleaning up build files
------> Clearing previous swift cache
------> Saving cache (default):
------> Optimizing contents of cache folder
------> Uploading droplet (29M)
-
-0 of 1 instances running, 1 starting
-1 of 1 instances running
-
-App started
+Waiting for API to complete processing files...
+timeout connecting to log server, no log will be shown
 
 
-OK
+Staging app and tracing logs...
+   Cell b52d4499-f402-4b95-8ccc-75f95c8b518d creating container for instance 90754c9f-3c50-43a5-bdaa-80ad61cee7c3
+   Cell b52d4499-f402-4b95-8ccc-75f95c8b518d successfully created container for instance 90754c9f-3c50-43a5-bdaa-80ad61cee7c3
+   Downloading app package...
+   Downloaded app package (30K)
+   -----> Buildpack version 2.1.1
+   -----> Default supported Swift version is 5.0.2
+   -----> Configure for apt-get installs...
+   -----> Writing profile script...
+   -----> Copying deb files to installation folder...
+   -----> No Aptfile found.
+   -----> Getting swift-5.0.2
+          Downloaded swift-5.0.2
+   -----> Unpacking swift-5.0.2.tar.gz
+   -----> Getting clang-8.0.0
+          Downloaded clang-8.0.0
+   -----> Unpacking clang-8.0.0.tar.xz
+   -----> .ssh directory and config file not found.
+   -----> Skipping cache restore (new swift signature)
+   -----> Fetching Swift packages and parsing Package.swift files...
+          Fetching https://github.com/IBM-Swift/BlueSocket.git
+          Fetching https://github.com/IBM-Swift/CloudEnvironment.git
+          Fetching https://github.com/IBM-Swift/Health.git
+          Fetching https://github.com/IBM-Swift/KituraContracts.git
+          Fetching https://github.com/IBM-Swift/BlueSignals.git
+          Fetching https://github.com/IBM-Swift/OpenSSL.git
+          Fetching https://github.com/IBM-Swift/BlueSSLService.git
+          Fetching https://github.com/IBM-Swift/Configuration.git
+          Fetching https://github.com/IBM-Swift/Kitura-net.git
+          Fetching https://github.com/IBM-Swift/Kitura-TemplateEngine.git
+          Fetching https://github.com/IBM-Swift/Kitura.git
+          Fetching https://github.com/IBM-Swift/Swift-cfenv.git
+          Fetching https://github.com/IBM-Swift/HeliumLogger.git
+          Fetching https://github.com/IBM-Swift/LoggerAPI.git
+          Fetching https://github.com/IBM-Swift/TypeDecoder.git
+          Fetching https://github.com/IBM-Swift/FileKit.git
+   Completed resolution in 8.55s
+          Cloning https://github.com/IBM-Swift/KituraContracts.git
+          Resolving https://github.com/IBM-Swift/KituraContracts.git at 1.1.1
+          Cloning https://github.com/IBM-Swift/TypeDecoder.git
+          Resolving https://github.com/IBM-Swift/TypeDecoder.git at 1.3.0
+          Cloning https://github.com/IBM-Swift/Configuration.git
+          Resolving https://github.com/IBM-Swift/Configuration.git at 3.0.2
+          Cloning https://github.com/IBM-Swift/CloudEnvironment.git
+          Resolving https://github.com/IBM-Swift/CloudEnvironment.git at 9.0.0
+          Cloning https://github.com/IBM-Swift/Kitura-TemplateEngine.git
+          Resolving https://github.com/IBM-Swift/Kitura-TemplateEngine.git at 2.0.0
+          Cloning https://github.com/IBM-Swift/Kitura.git
+          Resolving https://github.com/IBM-Swift/Kitura.git at 2.6.2
+          Cloning https://github.com/IBM-Swift/BlueSSLService.git
+          Resolving https://github.com/IBM-Swift/BlueSSLService.git at 1.0.44
+          Cloning https://github.com/IBM-Swift/FileKit.git
+          Resolving https://github.com/IBM-Swift/FileKit.git at 0.0.1
+          Cloning https://github.com/IBM-Swift/Health.git
+          Resolving https://github.com/IBM-Swift/Health.git at 1.0.4
+          Cloning https://github.com/IBM-Swift/BlueSocket.git
+          Resolving https://github.com/IBM-Swift/BlueSocket.git at 1.0.44
+          Cloning https://github.com/IBM-Swift/OpenSSL.git
+          Resolving https://github.com/IBM-Swift/OpenSSL.git at 2.2.2
+          Cloning https://github.com/IBM-Swift/LoggerAPI.git
+          Resolving https://github.com/IBM-Swift/LoggerAPI.git at 1.8.0
+          Cloning https://github.com/IBM-Swift/Swift-cfenv.git
+          Resolving https://github.com/IBM-Swift/Swift-cfenv.git at 6.0.2
+          Cloning https://github.com/IBM-Swift/Kitura-net.git
+          Resolving https://github.com/IBM-Swift/Kitura-net.git at 2.1.6
+          Cloning https://github.com/IBM-Swift/BlueSignals.git
+          Resolving https://github.com/IBM-Swift/BlueSignals.git at 1.0.16
+          Cloning https://github.com/IBM-Swift/HeliumLogger.git
+          Resolving https://github.com/IBM-Swift/HeliumLogger.git at 1.8.0
+   -----> No additional packages to download.
+   -----> Skipping installation of App Management (debug)
+   -----> Installing system level dependencies...
+   -----> Building Package...
+   -----> Build config: release
+          [1/20] Compiling CHTTPParser utils.c
+          [2/20] Compiling CHTTPParser http_parser.c
+          [3/20] Compiling Swift Module 'TypeDecoder' (2 sources)
+          [4/20] Compiling Swift Module 'Socket' (3 sources)
+          [5/20] Compiling Swift Module 'Signals' (1 sources)
+          [6/20] Compiling Swift Module 'LoggerAPI' (1 sources)
+          [7/20] Compiling Swift Module 'KituraTemplateEngine' (1 sources)
+          [8/20] Compiling Swift Module 'KituraContracts' (9 sources)
+          [9/20] Compiling Swift Module 'HeliumLogger' (2 sources)
+          [10/20] Compiling Swift Module 'Health' (3 sources)
+          /tmp/app/.build/checkouts/TypeDecoder/Sources/TypeDecoder/TypeDecoder.swift:292:16: warning: 'Hashable.hashValue' is deprecated as a protocol requirement; conform type 'TypeInfo' to 'Hashable' by implementing 'hash(into:)' instead
+              public var hashValue: Int {
+                         ^
+          [11/20] Compiling Swift Module 'FileKit' (1 sources)
+          [12/20] Compiling Swift Module 'Configuration' (5 sources)
+          [13/20] Compiling Swift Module 'SSLService' (2 sources)
+          [14/20] Compiling Swift Module 'CloudFoundryEnv' (6 sources)
+          [15/20] Compiling Swift Module 'KituraNet' (36 sources)
+          [16/20] Compiling Swift Module 'CloudEnvironment' (18 sources)
+          [17/20] Compiling Swift Module 'Kitura' (52 sources)
+          /tmp/app/.build/checkouts/Kitura/Sources/Kitura/contentType/MediaType.swift:163:16: warning: 'Hashable.hashValue' is deprecated as a protocol requirement; conform type 'MediaType' to 'Hashable' by implementing 'hash(into:)' instead
+              public let hashValue: Int
+                         ^
+          [18/20] Compiling Swift Module 'Controller' (1 sources)
+          [19/20] Compiling Swift Module 'Kitura_Starter' (1 sources)
+          [20/20] Linking ./.build/x86_64-unknown-linux/release/Kitura-Starter
+   -----> Bin path: /tmp/app/.build/x86_64-unknown-linux/release
+   -----> Copying dynamic libraries
+   -----> Copying binaries to 'bin'
+   -----> Clearing previous swift cache
+   -----> Saving cache (default):
+   -----> - .build
+   -----> Optimizing contents of cache folder...
+   No start command specified by buildpack or via Procfile.
+   App will not start unless a command is provided at runtime.
+   Exit status 0
+   Uploading droplet, build artifacts cache...
+   Uploading droplet...
+   Uploading build artifacts cache...
+   Uploaded build artifacts cache (49.1M)
+   Uploaded droplet (244.7M)
+   Uploading complete
+   Cell b52d4499-f402-4b95-8ccc-75f95c8b518d stopping instance 90754c9f-3c50-43a5-bdaa-80ad61cee7c3
+   Cell b52d4499-f402-4b95-8ccc-75f95c8b518d destroying container for instance 90754c9f-3c50-43a5-bdaa-80ad61cee7c3
 
-App Kitura-Starter was started using this command `Kitura-Starter`
+Waiting for app to start...
 
-Showing health and status for app Kitura-Starter in org roliv@us.ibm.com / space dev as roliv@us.ibm.com...
-OK
+name:              GV-Kitura-Starter
+requested state:   started
+routes:            gv-kitura-starter-chatty-shark.mybluemix.net
+last uploaded:     Wed 31 Jul 14:13:09 CDT 2019
+stack:             cflinuxfs3
+buildpacks:        https://github.com/IBM-Swift/swift-buildpack
 
-requested state: started
-instances: 1/1
-usage: 256M x 1 instances
-urls: kitura-starter-nonclamorous-pekin.mybluemix.net
-last uploaded: Wed Nov 2 20:58:21 UTC 2016
-stack: cflinuxfs2
-buildpack: swift_buildpack
-
-     state     since                    cpu    memory          disk          details
-#0   running   2016-11-02 04:03:02 PM   0.0%   29.3M of 256M   89.5M of 1G
+type:            web
+instances:       1/1
+memory usage:    256M
+start command:   Kitura-Starter
+     state     since                  cpu    memory        disk           details
+#0   running   2019-07-31T19:14:04Z   0.4%   36K of 256M   458.4M of 1G
 ```
 
 The buildpack will detect your app as Swift if it has a `Package.swift` file in the root.
 
 ### Version installed on the IBM Cloud
 
-The latest version of the IBM Cloud buildpack for Swift on the IBM Cloud is [v2.0.20](https://github.com/IBM-Swift/swift-buildpack/releases/tag/2.0.20).
+The latest version of the IBM Cloud buildpack for Swift on the IBM Cloud is [v2.1.1](https://github.com/IBM-Swift/swift-buildpack/releases/tag/2.1.1).
 
 Please note that it is possible that the latest buildpack code contained in this repo hasn't yet been installed on the IBM Cloud. If that happens to be the case and you'd like to leverage the latest buildpack code, you can do so by adding the `-b https://github.com/IBM-Swift/swift-buildpack` parameter to the `ibmcloud app push` command, as shown below:
 
@@ -220,7 +224,7 @@ command: <executable_name>
 
 ### What is the latest version of Swift supported?
 
-The latest version of Swift supported by this buildpack is ```5.0```.
+The latest version of Swift supported by this buildpack is ```5.0.2```.
 
 ### Specify a Swift version
 
@@ -233,7 +237,8 @@ $ cat .swift-version
 
 Please note that the swift_buildpack installed on the IBM Cloud **caches** the following versions of the Swift binaries:
 
-- `5.0`
+- `5.0.2`
+- `5.0.1`
 - `4.2.4`
 
 If you'd like to use a different version of Swift [that is not cached] on the IBM Cloud, you can specify it in the `.swift-version` file.  Please be aware that using a Swift version that is not cached increases the provisioning time of your app on the IBM Cloud.
@@ -344,6 +349,12 @@ If you need to specify the path to header files for a system package installed b
 -Xcc -I$BUILD_DIR/.apt/usr/include/<path to header files>
 ```
 
+If you need to specify environment variables that apply during the build,, such as to enable [Kitura-NIO](https://github.com/IBM-Swift/Kitura-NIO#using-kitura-nio), create a file with the name `.swift-build-env-linux` in the root project directory. Edit the file and add one environment variable per line. For example:
+```
+KITURA_NIO=1
+FOO=BAR
+```
+
 ### libdispatch
 
 Previous versions of this buildpack provided the [libdispatch](https://github.com/apple/swift-corelibs-libdispatch) binaries for Swift development builds **prior** to 2016-08-23. However, current and future versions of this buildpack will **not** provide those binaries. Users should upgrade their applications to Swift 3.0, which already includes the libdispatch binaries.
@@ -389,8 +400,8 @@ Admin tasks
 To install this buildpack:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.20/buildpack_swift_v2.0.20-20190401-2122.zip
-ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.20-20190401-2122.zip <position>
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.1.1/buildpack_swift_v2.1.1-20190821-1902.zip
+ibmcloud cf create-buildpack swift_buildpack uildpack_swift_v2.1.1-20190821-1902.zip <position>
 ```
 
 **Position** is a positive integer, sets priority, and is sorted from lowest to highest when listed using the `ibmcloud cf buildpacks` command.
@@ -398,8 +409,8 @@ ibmcloud cf create-buildpack swift_buildpack buildpack_swift_v2.0.20-20190401-21
 And to update it:
 
 ```shell
-wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.0.20/buildpack_swift_v2.0.20-20190401-2122.zip
-ibmcloud cf update-buildpack swift_buildpack -p buildpack_swift_v2.0.20-20190401-2122.zip
+wget https://github.com/IBM-Swift/swift-buildpack/releases/download/2.1.1/buildpack_swift_v2.1.1-20190821-1902.zip
+ibmcloud cf update-buildpack swift_buildpack -p uildpack_swift_v2.1.1-20190821-1902.zip
 ```
 
 For more details on installing buildpacks, see [Adding buildpacks to Cloud Foundry](https://docs.cloudfoundry.org/adminguide/buildpacks.html).

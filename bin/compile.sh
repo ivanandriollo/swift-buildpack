@@ -130,6 +130,18 @@ else
 fi
 
 # ----------------------------------------------------------------------------- #
+	# Set any user specified build environment variables.                            #
+	# (Note, this is currently required in order to use Kitura with SwiftNIO.)
+	# ----------------------------------------------------------------------------- #
+	if [ -f $BUILD_DIR/.swift-build-env-linux ]; then
+	  status ".swift-build-env-linux found."
+	  for ENV_VAR in $(cat $BUILD_DIR/.swift-build-env-linux); do
+	    export $ENV_VAR
+	    status "Set build environment variable: $ENV_VAR"
+	  done
+	fi
+
+# ----------------------------------------------------------------------------- #
 # Install Swift dev tools & clang                                               #
 # ----------------------------------------------------------------------------- #
 # Determine Swift version for the app
