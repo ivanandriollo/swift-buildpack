@@ -127,6 +127,9 @@ download_packages() {
 
   # Update packages array contents
   packages=("${pkgs[@]}")
+  apt-get $APT_OPTIONS dist-upgrade -f
+  apt-get $APT_OPTIONS update
+  apt-get $APT_OPTIONS install -y --force-yes curl
   if [ ${#packages[@]} -eq 0 ]; then
     status "No additional packages to download."
   else
